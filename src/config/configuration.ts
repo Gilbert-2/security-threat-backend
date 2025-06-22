@@ -8,7 +8,7 @@ export default () => ({
     // username: process.env.DATABASE_USERNAME,
     // password: process.env.DATABASE_PASSWORD,
     // database: process.env.DATABASE_NAME,
-    url: process.env.DATABASE_URL
+    url: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_Hm5cbAEjWCl2@ep-purple-recipe-a8u60js9-pooler.eastus2.azure.neon.tech/neondb?sslmode=require',
   },
   jwt: {
     secret: process.env.JWT_SECRET,

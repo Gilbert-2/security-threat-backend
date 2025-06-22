@@ -18,11 +18,8 @@ import { UsersModule } from './users/users.module';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get('DATABASE_HOST', 'localhost'),
-        port: configService.get('DATABASE_PORT', 5432),
-        username: configService.get('DATABASE_USERNAME', 'postgres'),
-        password: configService.get('DATABASE_PASSWORD', '12345'),
-        database: configService.get('DATABASE_NAME', 'security'),
+        url: configService.get('DATABASE_URL', 'postgresql://neondb_owner:npg_Hm5cbAEjWCl2@ep-purple-recipe-a8u60js9-pooler.eastus2.azure.neon.tech/neondb?sslmode=require'),
+        ssl: { rejectUnauthorized: false },
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: configService.get('NODE_ENV') !== 'production',
         logging: true,
