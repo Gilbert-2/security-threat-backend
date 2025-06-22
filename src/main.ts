@@ -9,7 +9,10 @@ async function bootstrap() {
   
   // Enable CORS with specific configuration
   app.enableCors({
-    origin: 'http://localhost:8080',
+    origin: [
+      'https://security-threat-detection.netlify.app',
+      'http://localhost:8080',
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
     allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
