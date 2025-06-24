@@ -22,7 +22,8 @@ export class UploadController {
     },
   })
   uploadProfilePicture(@UploadedFile() file: MulterFile, @Req() req: Request) {
-    // Construct the URL based on the request
+    // The filename returned by Multer always includes the extension.
+    // The frontend should use this exact filename (with extension) for all profile picture URLs.
     const host = req.get('host');
     const protocol = req.protocol;
     const url = `${protocol}://${host}/uploads/${file.filename}`;
