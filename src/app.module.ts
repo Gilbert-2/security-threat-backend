@@ -8,6 +8,8 @@ import { AnalyticsModule } from './analytics/analytics.module';
 import { IntegrationModule } from './integration/integration.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { UsersModule } from './users/users.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { UploadController } from './upload.controller';
 
 @Module({
   imports: [
@@ -26,6 +28,7 @@ import { UsersModule } from './users/users.module';
       }),
       inject: [ConfigService],
     }),
+    MulterModule.register({ dest: './uploads' }),
     VideoModule,
     AlertModule,
     AuthModule,
@@ -34,5 +37,6 @@ import { UsersModule } from './users/users.module';
     NotificationsModule,
     UsersModule,
   ],
+  controllers: [UploadController],
 })
 export class AppModule {}
