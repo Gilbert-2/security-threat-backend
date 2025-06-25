@@ -79,13 +79,15 @@ export class CreateAlertDto {
   @Type(() => LocationDetailsDto)
   locationDetails: LocationDetailsDto;
 
-  @ApiProperty({ example: 'rule-uuid' })
+  @ApiProperty({ example: 'rule-uuid', required: false })
   @IsString()
-  ruleId: string;
+  @IsOptional()
+  ruleId?: string;
 
-  @ApiProperty({ example: 'frame-uuid' })
+  @ApiProperty({ example: 'frame-uuid', required: false })
   @IsString()
-  frameId: string;
+  @IsOptional()
+  frameId?: string;
 
   @ApiProperty({ required: false, example: { ipAddress: '192.168.1.100', attemptCount: 5 } })
   @IsObject()

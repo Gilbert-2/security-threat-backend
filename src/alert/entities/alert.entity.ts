@@ -68,18 +68,18 @@ export class Alert {
     accessPoint?: string;
   };
 
-  @ManyToOne(() => AlertRule)
+  @ManyToOne(() => AlertRule, { nullable: true })
   @JoinColumn({ name: 'ruleId' })
   rule: AlertRule;
 
-  @Column()
+  @Column({ nullable: true })
   ruleId: string;
 
-  @ManyToOne(() => VideoFrame)
+  @ManyToOne(() => VideoFrame, { nullable: true })
   @JoinColumn({ name: 'frameId' })
   frame: VideoFrame;
 
-  @Column()
+  @Column({ nullable: true })
   frameId: string;
 
   @Column({ type: 'jsonb', nullable: true })

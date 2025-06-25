@@ -22,7 +22,14 @@ export class AlertService {
   }
 
   async create(createAlertDto: CreateAlertDto): Promise<Alert> {
-    const alert = this.alertRepository.create(createAlertDto);
+    // Handle optional ruleId and frameId
+    const alertData = {
+      ...createAlertDto,
+      ruleId: createAlertDto.ruleId || null,
+      frameId: createAlertDto.frameId || null
+    };
+    
+    const alert = this.alertRepository.create(alertData);
     await this.alertRepository.save(alert);
 
     // Record analytics event for alert creation (no userId available)
